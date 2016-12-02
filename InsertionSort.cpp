@@ -45,23 +45,31 @@ void InsertionSort(int DataArray[], int Length){
     int value = 0;
     
     for(int i=0; i< Length; i++){
+        cout << " 입장 i : " << i;
         /* 첫포문으로 들어간 후 조건을 봄*/
+        cout << " | 전자 (i-1) : " << DataArray[i -1] << " 후자 i : " << DataArray[i] << endl;
         if(DataArray[i -1] <= DataArray[i]) continue;
         /* 전자가 후자보다 작거나 같을 때 컨티뉴*/
         value = DataArray[i]; /* 만약 아니라면 후자값을 value에 주입함*/
+        cout << "value : " << value << endl; 
         
         for(int j=0; j< i; j++){
+            cout << "length - i : " << i << " j : " << j;
             /* 그 후 내부 포문 첫포문 수까지*/
+            cout << " | DataArray[j] : " << DataArray[j] << " > value : " << value << endl;
             if(DataArray[j]>value){ /* value보다 큰 원소를 찾아냄*/
                 /* memmove는 메모리 블럭을 옮기는 함수*/
+                cout << " DataArray : " << DataArray[0] << " - " <<  DataArray[1] << " - " << DataArray[2] << " - " << DataArray[3] << " - " << DataArray[4] << " - " << DataArray[5] << endl;
+                cout << " 전자 &DataArray[j]의 값 " << j << "(" << DataArray[j] << ")" << "가 " << "후자 &DataArray[j+1]의 값 " << (j+1) <<  "(" << DataArray[j+1] << ")" <<  "로 이동" << endl;
                 memmove(&DataArray[j+1], &DataArray[j], sizeof(DataArray[0]) * (i-j));
                 /* 위 문장을 해석하면
                    
                    김아무개 = sizeof(DataArray[0]) 곱하기 (i-j)
                    
-                   &DataArray[j+1] 부터 (김아무개)만큼 &DataArray[j+1]로 이동한다는 말임
+                   &DataArray[j] 부터 (김아무개)만큼 &DataArray[j+1]로 이동한다는 말임
                 */
                 DataArray[j] = value; /*value에 주입된 값은 DataArray[j]에 주입됨 */
+                cout << "DataArray[j] : " << DataArray[j] << " 전자의 값에 value가 주입됨 "<< endl;
                 break;
             }
         }
