@@ -44,14 +44,22 @@ using namespace std;
 void BubbleSort(int DataArray[], int Length){
     int i = 0, j = 0, temp =0;
     for (i=0; i<Length-1; i++){
+        cout << " 입장 i : " << i << endl;
+        /* 첫포문으로 들어간 후 내부 포문을 돌림 */
         for (j=0; j<Length-(i+1); j++){
+            cout << " i와 j : " << i << " , " << j << endl;
+            /* 내부 포문이 돌아간다 랭쓰만큼 돌려줌 */
             if (DataArray[j]>DataArray[j+1]) {
+                /* 돌려줄 때 전자가 후자보다 높을때*/
                 temp = DataArray[j+1];
                 DataArray[j+1] = DataArray[j];
-                DataArray[j] = temp;    
+                DataArray[j] = temp;
+                /* 바꿔줌 */
             }
         }
+        /*그 후 첫포문으로 돌아가서 반복*/
     }
+    /*  반복할게 없으면 루프 빠져나감*/
 }
 
 void Sort::bubble(){
