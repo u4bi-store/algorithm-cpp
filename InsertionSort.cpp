@@ -45,19 +45,30 @@ void InsertionSort(int DataArray[], int Length){
     int value = 0;
     
     for(int i=0; i< Length; i++){
+        /* 첫포문으로 들어간 후 조건을 봄*/
         if(DataArray[i -1] <= DataArray[i]) continue;
-        value = DataArray[i];
+        /* 전자가 후자보다 작거나 같을 때 컨티뉴*/
+        value = DataArray[i]; /* 만약 아니라면 후자값을 value에 주입함*/
         
         for(int j=0; j< i; j++){
-            if(DataArray[j]>value){
+            /* 그 후 내부 포문 첫포문 수까지*/
+            if(DataArray[j]>value){ /* value보다 큰 원소를 찾아냄*/
                 /* memmove는 메모리 블럭을 옮기는 함수*/
                 memmove(&DataArray[j+1], &DataArray[j], sizeof(DataArray[0]) * (i-j));
-                DataArray[j] = value;
+                /* 위 문장을 해석하면
+                   
+                   김아무개 = sizeof(DataArray[0]) 곱하기 (i-j)
+                   
+                   &DataArray[j+1] 부터 (김아무개)만큼 &DataArray[j+1]로 이동한다는 말임
+                */
+                DataArray[j] = value; /*value에 주입된 값은 DataArray[j]에 주입됨 */
                 break;
             }
         }
+        /* 그 후 첫 포문으로 돌아가서 반복*/
         
     }
+    /* 반복할게 없으면 루프 빠져나감*/
   
 }
 
