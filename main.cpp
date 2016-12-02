@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     cout << "u4bi c++ algorithm" <<endl;
     Sort sort;
-    sort.bubble();
-  
+    //sort.bubble();
+    sort.insertion();
     return 0;
 }

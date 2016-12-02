@@ -11,5 +11,6 @@
 class Sort{
 public:
     void bubble();
+    void insertion();
 };
 #endif
