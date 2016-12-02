@@ -66,36 +66,51 @@ using namespace std;
    반환값은 좌우 그릅 인덱스로 재귀
 */
 int partition(int arr[], int left, int right){
-    int first = left;
-    int pivot = arr[first];
+    int first = left; /* 인자에 담긴 left가 기준자리임 first에 주입*/
+    int pivot = arr[first]; /* 기준인 자리의 값을 담음*/
     int temp = 0;
-    
+    cout << " 변수 정의 --- 기준자리 : " << first << " 기준자리의 값 : " << pivot << endl;
     ++left;
     
+    /* 첫 도입부 와일 왼쪽이 오른쪽보다 크면 루프에서 나옴*/
     while(left <= right){
-        while(arr[left] <= pivot && left < right) ++left; 
-        while(arr[right] > pivot && left <= right) --right; 
+        cout << " 점검 --- DataArray : " << arr[0] << " - " <<  arr[1] << " - " << arr[2] << " - " << arr[3] << " - " << arr[4] << " - " << arr[5] << endl;
+        cout << " 루프 내부 --- 왼쪽자리 : " << left << " 기준자리 : " << pivot << " 오른쪽자리 : " << right << endl;
+
+        /* 기준값보다 크거나 같은 데이터 찾을때까지 탐색*/
+        while(arr[left] <= pivot && left < right) ++left; /*왼쪽에서 오른쪽으로*/
         
-        if(left < right){ 
+        /* 기준값보다 보다 작은 데이터 찾을때까지 탐색*/
+        while(arr[right] > pivot && left <= right) --right; /*오른쪽에서 왼쪽으로*/
+        
+        if(left < right){
             temp = arr[left];
             arr[left] = arr[right];
             arr[right] = temp;
+            cout << " 루프 내부 스왑 --- arr[left] : " << arr[left] << " arr[right] : " << arr[right] << endl;
+            cout << " 스왑 --- DataArray : " << arr[0] << " - " <<  arr[1] << " - " << arr[2] << " - " << arr[3] << " - " << arr[4] << " - " << arr[5] << endl;
         }else break;
     }
-    
-    temp = arr[first]; 
-    arr[first] = arr[right]; 
-    arr[right] = temp; 
+
+    cout << " 점검 --- DataArray : " << arr[0] << " - " <<  arr[1] << " - " << arr[2] << " - " << arr[3] << " - " << arr[4] << " - " << arr[5] << endl;
+    cout << " 루프 외부 --- 왼쪽자리 : " << left << " 기준자리 : " << pivot << " 오른쪽자리 : " << right << endl;
+    temp = arr[first];
+    arr[first] = arr[right];
+    arr[right] = temp;
+    cout << " 루프 외부 스왑 --- arr[first] : " << arr[first] << " arr[right] : " << arr[right] << endl;
+    cout << " 스왑 --- DataArray : " << arr[0] << " - " <<  arr[1] << " - " << arr[2] << " - " << arr[3] << " - " << arr[4] << " - " << arr[5] << endl;
     
     return right;
 }
   
 void QuickSort(int DataArray[], int left, int right){ 
     if(left < right){
-        int index = partition(DataArray, left, right); 
-         
-        QuickSort(DataArray, left, index-1); 
-        QuickSort(DataArray, index +1, right); 
+        cout << "퀵솔트 진행" << endl;
+        /* 왼쪽보다 오른쪽이 클 경우 진행*/
+        int index = partition(DataArray, left, right); /* 리턴함수에 데이터와 왼쪽번째와 오른쪽번째가 들어감*/ 
+        /* 리턴되어 나온 오른쪽번째가 각각 A그룹 B그룹을 나누어 재귀로 돈다.*/
+        QuickSort(DataArray, left, index-1); /* A그룹 왼쪽*/
+        QuickSort(DataArray, index +1, right); /* B그룹 오른쪽*/
     }
 }
 
@@ -112,7 +127,7 @@ void Sort::quick(){
     cout << endl << Length << "개의 배열 정수를 입력 : ";
     for(i=0; i<Length; i++) cin >> DataArray[i];
     
-    QuickSort(DataArray, 0, Length-1);
+    QuickSort(DataArray, 0, Length-1); /* 퀵솔트(DataArray, 배열의 첫번째, 배열의 끝번째) */
   
     for(i=0; i<Length; i++) cout << i << ". DataArray : " << DataArray[i] << endl;
 }
