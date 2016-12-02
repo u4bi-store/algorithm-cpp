@@ -8,6 +8,7 @@ int main() {
     cout << "u4bi c++ algorithm" <<endl;
     Sort sort;
     //sort.bubble();
-    sort.insertion();
+    //sort.insertion();
+    sort.quick();
     return 0;
 }

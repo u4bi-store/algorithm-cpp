@@ -12,5 +12,6 @@ class Sort{
 public:
     void bubble();
     void insertion();
+    void quick();
 };
 #endif
