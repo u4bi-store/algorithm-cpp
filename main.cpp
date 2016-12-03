@@ -22,6 +22,8 @@ int main() {
     star.triangle(3);
     line();
     star.pyramid();
-
+    line();
+    star.diamond();
+    
     return 0;
 }
