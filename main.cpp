@@ -20,6 +20,8 @@ int main() {
     star.triangle(2);
     line();
     star.triangle(3);
+    line();
+    star.pyramid();
 
     return 0;
 }
